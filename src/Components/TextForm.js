@@ -1,25 +1,55 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 export default function TextForm(props) {
+  const convertUptext = () =>{
+    // console.log("UpperCase was clicked" + text);
+    let newtext = text.toUpperCase();
+    setText(newtext);
+  }
+  const convertLotext = () =>{
+    // console.log("LowerCase was clicked" + text);
+    let newtext = text.toLowerCase();
+    setText(newtext);
+  }
+  const convertClear = () =>{
+    // console.log("LowerCase was clicked" + text);
+    let newtext = '';
+    setText(newtext);
+  }
+  const convertReverse = () =>{
+    // console.log("LowerCase was clicked" + text);
+    let strArr = text.split("");
+    strArr = strArr.reverse();
+    let newText = strArr.join("");
+    setText(newText);
+  };
+  const handleOnChange = (event) =>{
+    // console.log("Onchange was clicked");
+    setText(event.target.value);
+  }
+  const [text, setText] = useState('');
   return (
-    <div>
+    <>
+    <div className="container">
       <form>
       <h1>{props.heading}</h1>
-          <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <div className="mb-3">
+            <input type="text" className="form-control" value = {text} onChange={handleOnChange} id="exampleInputEmail1" aria-describedby="emailHelp"/>
           </div>
-          <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1"/>
-          </div>
-          <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-          </div>
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" className="btn btn-primary mx-2" onClick ={convertUptext}>Convert to UpperCase</button>
+          <button type="submit" className="btn btn-primary mx-2" onClick ={convertLotext}>Convert to LowerCase</button>
+          <button type="submit" className="btn btn-primary mx-2" onClick ={convertClear}>Clear text</button>
+          <button type="submit" className="btn btn-primary mx-2" onClick ={convertReverse}>Reverse text</button>
+
         </form>
     </div>
+    <div className="container my-3">
+      <h2>Your text summary</h2>
+      <p>{text.split(" ").length - 1} words {text.length} characters </p>
+      <p>{ 0.008 * text.split(" ").length} minutes read</p>
+      <h2>Preview</h2>
+      <p>{text}</p>
+    </div>
+    </>
   )
 }
