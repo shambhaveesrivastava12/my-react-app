@@ -4,16 +4,19 @@ export default function TextForm(props) {
   const convertUptext = ()=>{
       let newText = text.toUpperCase();
       setText(newText)
+      props.showAlert("Converted to uppercase", "success");
   }
   const convertLotext = () =>{
     // console.log("LowerCase was clicked" + text);
     let newtext = text.toLowerCase();
     setText(newtext)
+    props.showAlert("Converted to lowercase", "success");
   }
   const convertClear = () =>{
     // console.log("LowerCase was clicked" + text);
     let newtext = '';
     setText(newtext)
+    props.showAlert("Text cleared", "warning");
   }
   const convertReverse = () =>{
     // console.log("LowerCase was clicked" + text);
@@ -21,6 +24,7 @@ export default function TextForm(props) {
     strArr = strArr.reverse();
     let newText = strArr.join("");
     setText(newText);
+    props.showAlert("Text reversed", "success");
   };
   const handleOnChange = (event) =>{
     // console.log("Onchange was clicked");
