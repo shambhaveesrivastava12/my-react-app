@@ -4,6 +4,8 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 import Alert from './Components/Alert';
+import About from './Components/About';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 // import About from './Components/About';
 function App() {
@@ -25,21 +27,56 @@ function App() {
       setMode('dark')
       document.body.style.backgroundColor = '#161616'
       showAlert("Dark mode enabled", "success");
+      document.title='My App - Dark Mode'
     }
     if(mode === 'dark'){
       setMode('light')
       document.body.style.backgroundColor = 'white'
       showAlert("Light mode enabled", "success");
+      document.title='My App - Light Mode'
     }
   }
+  const toggleMode2 = ()=>{
+    if(mode === 'light'){
+      setMode('pink')
+      document.body.style.backgroundColor = '#dd0a9f'
+      showAlert("Pink mode enabled", "success");
+    }
+    if(mode === 'pink'){
+      setMode('light')
+      document.body.style.backgroundColor = 'white'
+      showAlert("Light mode enabled", "success");
+    }
+  }
+  const toggleMode3 = ()=>{
+    if(mode === 'light'){
+      setMode('green')
+      document.body.style.backgroundColor = '#0de658'
+      showAlert("Green mode enabled", "success");
+    }
+    if(mode === 'green'){
+      setMode('light')
+      document.body.style.backgroundColor = 'white'
+      showAlert("Light mode enabled", "success");
+    }
+  }
+
   return (
    <>
-   <Navbar title="MyApp" aboutText="About Us" mode = {mode} toggleMode={toggleMode}/>
+   <Router>
+   <Navbar title="MyApp" aboutText="About Us" mode = {mode} toggleMode={toggleMode} toggleMode2={toggleMode2} toggleMode3={toggleMode3}/>
    <Alert alert={alert}/>
    <div className="container">
-   <TextForm showAlert={showAlert} heading='Enter text you want to analyze' mode={mode}/>
-   {/* <About/> */}
+   <Switch>
+          <Route exact path="/about">
+            <About />
+          </Route>
+          <Route exact path="/">
+          <TextForm showAlert={showAlert} heading='Enter text you want to analyze' mode={mode}/>
+          </Route>
+        </Switch>
    </div>
+   </Router>
    </>
   );
 }
