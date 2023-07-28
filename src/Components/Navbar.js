@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
@@ -19,14 +20,14 @@ export default function Navbar(props) {
             <Link className="nav-link" to="/about">{props.aboutText}</Link>
           </li>
         </ul>
-                            <div className={`form-check form-switch text-${props.mode ==='light'?'dark':'light'} mx-2`} >
+                            {/* <div className={`form-check form-switch text-${props.mode ==='light'?'dark':'light'} mx-2`} >
                       <input className="form-check-input" type="checkbox" onClick={props.toggleMode3} role="switch" id="flexSwitchCheckDefault"/>
                       <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Green Mode</label>
                     </div>
                     <div className={`form-check form-switch text-${props.mode ==='light'?'dark':'light'} mx-2`} >
                       <input className="form-check-input" type="checkbox" onClick={props.toggleMode2} role="switch" id="flexSwitchCheckDefault"/>
                       <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Pink Mode</label>
-                    </div>
+                    </div> */}
                     <div className={`form-check form-switch text-${props.mode ==='light'?'dark':'light'}`}>
               <input className="form-check-input" type="checkbox" onClick={props.toggleMode} role="switch" id="flexSwitchCheckDefault"/>
               <label className="form-check-label" htmlFor="flexSwitchCheckDefault">Enable Dark Mode</label>
