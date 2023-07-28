@@ -26,13 +26,13 @@ function App() {
       setMode('dark')
       document.body.style.backgroundColor = '#161616'
       showAlert("Dark mode enabled", "success");
-      document.title='My App - Dark Mode'
+      // document.title='My App - Dark Mode'
     }
     if(mode === 'dark'){
       setMode('light')
       document.body.style.backgroundColor = 'white'
       showAlert("Light mode enabled", "success");
-      document.title='My App - Light Mode'
+      // document.title='My App - Light Mode'
     }
   }
   // const toggleMode2 = ()=>{
@@ -71,7 +71,7 @@ function App() {
             <About mode={mode}/>
           </Route>
           <Route exact path="/">
-          <TextForm showAlert={showAlert} heading='Enter text you want to analyze' mode={mode}/>
+          <TextForm showAlert={showAlert} heading='Try Text Anthologist - word and character counter, removes extra spaces, case changer' mode={mode}/>
           </Route>
         </Switch>
    </div>
