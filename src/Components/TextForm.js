@@ -7,19 +7,16 @@ export default function TextForm(props) {
       props.showAlert("Converted to uppercase", "success");
   }
   const convertLotext = () =>{
-    // console.log("LowerCase was clicked" + text);
     let newtext = text.toLowerCase();
     setText(newtext)
     props.showAlert("Converted to lowercase", "success");
   }
   const convertClear = () =>{
-    // console.log("LowerCase was clicked" + text);
     let newtext = '';
     setText(newtext)
     props.showAlert("Text cleared", "warning");
   }
   const convertReverse = () =>{
-    // console.log("LowerCase was clicked" + text);
     let strArr = text.split("");
     strArr = strArr.reverse();
     let newText = strArr.join("");
@@ -27,7 +24,6 @@ export default function TextForm(props) {
     props.showAlert("Text reversed", "success");
   };
   const handleOnChange = (event) =>{
-    // console.log("Onchange was clicked");
     setText(event.target.value);
   }
   const handleExtraSpaces = () => {
@@ -51,7 +47,7 @@ export default function TextForm(props) {
     </div>
     <div className="container my-3" style={{color: props.mode==='dark'?'white':'black'}}>
       <h2>Your text summary</h2>
-      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words {text.length} characters </p>
+      <p>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words {text.length} characters </p>
       <p>{ 0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
       <h2>Preview</h2>
       <p>{text.length>0?text:'Nothing to preview!'}</p>
